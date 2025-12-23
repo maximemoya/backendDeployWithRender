@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: backend-express-ts
+    env: node
+    region: frankfurt  # ou oregon, singapore selon votre préférence
+    plan: free  # ou starter, standard selon vos besoins
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000  # Port par défaut de Render
+    # Ajouter d'autres variables d'environnement si nécessaire:
+    # - key: DATABASE_URL
+    #   fromDatabase:
+    #     name: your-database-name
+    #     property: connectionString
